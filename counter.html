@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"rel="stylesheet">
+</head>
+<style>
+
+    button {
+        border: none;
+        background-color: transparent;  
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        width: 200px;
+        margin: auto;
+    }
+    .material-icons{
+        font-style: Material Icons;
+        font-size: 60px;
+        color: thistle;
+    }
+    body {
+        background-color: #ffecef;
+    }
+    .counter {
+        width: 200px;
+        height: 200px;
+        margin: auto;
+        background-color: #ff4f5c;
+        border-radius: 50px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    .newCounter {
+        font-size: 100px;
+        color: white;
+    }
+</style>
+<body>
+    <div class="container">
+        <button id="plusBtn"><span class="material-icons">
+            expand_less
+            </span> </button>
+        <div class="counter" id="counter">
+            
+        </div>
+        <button id="minusBtn"> <span class="material-icons">
+            expand_more
+            </span> </button>
+
+        <button id="clearBtn"><span class="material-icons">
+            clear
+            </span></button>
+    </div>
+<script>
+    const counterBox = document.getElementById('counter');
+    const plusBtn = document.getElementById('plusBtn');
+    const minusBtn = document.getElementById('minusBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    let counter = localStorage.getItem('counter')||0
+    counterBox.innerHTML = `<span  class="newCounter"> ${localStorage.getItem('counter')||[]}</span>`;
+
+    plusBtn.addEventListener('click', plus );
+    minusBtn.addEventListener('click', minus );
+    clearBtn.addEventListener('click', clear );
+
+    function plus() {
+        counter++
+        counterBox.innerHTML = `<span class="newCounter"> ${counter}</span>`;
+        localStorage.setItem('counter', counter )
+
+    }
+
+    function minus() {
+        counter--
+        counterBox.innerHTML = `<span  class="newCounter"> ${counter}</span>`;
+        localStorage.setItem('counter', counter )
+    }
+
+    function clear() {
+        counter = ''
+        counterBox.innerHTML = `<span  class="newCounter"> ${counter}</span>`;
+        localStorage.clear()
+    }
+</script>
+</body>
+
+</html>
